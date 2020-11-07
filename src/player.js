@@ -1,8 +1,16 @@
 class Player {
-  constructor(id, token, turn) {
+  constructor(id, token) {
     this.id = id;
     this.token = token;
     this.wins = 0;
-    this.myTurn = turn
+    this.myTurn = false
+  };
+
+  saveWinsToStorage() {
+
+  };
+
+  retrieveWinsFromStorage() {
+
   };
 };
