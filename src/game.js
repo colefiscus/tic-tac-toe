@@ -3,6 +3,7 @@ class Game {
     this.player1 = new Player('Gryffindor', '🦁')
     this.player2 = new Player('Slytherin', '🐍')
     this.board = {1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: ''}
+    this.winCondition;
   };
 
   startGame() {
@@ -23,49 +24,49 @@ class Game {
 
   updateBoard(player, choice) {
     if (player.myTurn === true) {
-      this.board.choice = player.token;
+      this.board[choice] = player.token;
     };
   };
 
   checkForWinner(player) {
-     switch (winCondition) {
+     switch (this.winCondition) {
        case this.board[1], this.board[2], this.board[3] === player.token :
-         addWinToPlayer(player);
+         this.addWinToPlayer(player);
          return `${player.id} wins!`;
        break;
 
        case this.board[4], this.board[5], this.board[6] === player.token :
-         addWinToPlayer(player);
+         this.addWinToPlayer(player);
          return `${player.id} wins!`;
        break;
 
        case this.board[7], this.board[8], this.board[9] === player.token :
-         addWinToPlayer(player);
+         this.addWinToPlayer(player);
          return `${player.id} wins!`;
        break;
 
        case this.board[1], this.board[4], this.board[7] === player.token :
-         addWinToPlayer(player);
+         this.addWinToPlayer(player);
          return `${player.id} wins!`;
        break;
 
        case this.board[2], this.board[5], this.board[8] === player.token :
-         addWinToPlayer(player);
+         this.addWinToPlayer(player);
          return `${player.id} wins!`;
        break;
 
        case this.board[3], this.board[6], this.board[9] === player.token :
-         addWinToPlayer(player);
+         this.addWinToPlayer(player);
          return `${player.id} wins!`;
        break;
 
        case this.board[3], this.board[5], this.board[7] === player.token :
-         addWinToPlayer(player);
+         this.addWinToPlayer(player);
          return `${player.id} wins!`;
        break;
 
        case this.board[1], this.board[5], this.board[9] === player.token :
-         addWinToPlayer(player);
+         this.addWinToPlayer(player);
          return `${player.id} wins!`;
        break;
 
