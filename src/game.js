@@ -71,7 +71,6 @@ class Game {
 
   checkForDraw() {
     var drawCounter = 0;
-    debugger;
     for (var i = 1; i < 10; i++) {
       if (this.board[i] === this.player1.token || this.board[i] === this.player2.token) {
         drawCounter++

@@ -6,11 +6,11 @@ class Player {
     this.myTurn = false
   };
 
-  saveWinsToStorage() {
+  savePointsToStorage() {
 
   };
 
-  retrieveWinsFromStorage() {
+  retrievePointsFromStorage() {
 
   };
 };

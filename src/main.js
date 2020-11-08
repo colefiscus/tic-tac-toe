@@ -3,37 +3,13 @@ var playerOnePoints = document.querySelector('.player-1-points');
 var playerTwoPoints = document.querySelector('.player-2-points');
 var ticTacToeText = document.querySelector('.tic-tac-toe-text');
 
-var ticTacToe = document.querySelector('.tic-tac-toe')
+var ticTacToe = document.querySelector('.tic-tac-toe');
 
-// I dont know if I need all of these if I can just use event.target + IDs
-
-// var topLeft = document.querySelector('#1');
-// var topCenter = document.querySelector('#2');
-// var topRight = document.querySelector('#3');
-// var middleLeft = document.querySelector('#4');
-// var middleCenter = document.querySelector('#5');
-// var middleRight = document.querySelector('#6');
-// var bottomLeft = document.querySelector('#7');
-// var bottomCenter = document.querySelector('#8');
-// var bottomRight = document.querySelector('#9');
-
-var game = new Game()
+var game = new Game();
 
 // EVENT LISTENERS //
-window.addEventListener('load', startNewGame)
-ticTacToe.addEventListener('click', takePlayerTurn)
-
-// I dont know if I need all of these if I can just use event.target + IDs
-
-// topLeft.eventListener('click', );
-// topCenter.eventListener('click', );
-// topRight.eventListener('click', );
-// middleLeft.eventListener('click', );
-// middleCenter.eventListener('click', );
-// middleRight.eventListener('click', );
-// bottomLeft.eventListener('click', );
-// bottomCenter.eventListener('click', );
-// bottomRight.eventListener('click', );
+window.addEventListener('load', startNewGame);
+ticTacToe.addEventListener('click', takePlayerTurn);
 
 // FUNCTIONS //
 function startNewGame() {
@@ -57,21 +33,23 @@ function updateScore() {
 
 function takePlayerTurn(event) {
   if (game.player1.myTurn) {
-    addPlayerToken(event, game.player1);
-    checkForWinner(game.player1);
-    checkForDraw()
+    addPlayerToken(game.player1);
     game.takeTurn();
+    showPlayerTurn();
+    checkForWinner(game.player1);
+    checkForDraw();
   } else {
-    addPlayerToken(event, game.player2);
+    addPlayerToken(game.player2);
+    game.takeTurn();
+    showPlayerTurn();
     checkForWinner(game.player2);
     checkForDraw();
-    game.takeTurn();
   };
 };
 
-function addPlayerToken(event, player) {
+function addPlayerToken(player) {
   var squareID = event.target.id;
-  if (player.myTurn) {
+  if (player.myTurn && !event.target.innerText) {
     game.updateBoard(player, squareID);
     event.target.innerText = player.token;
   };
@@ -79,10 +57,47 @@ function addPlayerToken(event, player) {
 
 function checkForWinner(player) {
   var winner = game.checkForWinner(player);
-  ticTacToeText.innerText = `${winner}`;
+  if (typeof(winner) === 'string') {
+    ticTacToeText.innerText = `${winner}`;
+    resetGame(winner);
+  };
 };
 
 function checkForDraw() {
   var draw = game.checkForDraw();
-  ticTacToeText.innerText = `${draw}`;
+  if (typeof(draw) === 'string') {
+    ticTacToeText.innerText = `${draw}`;
+    resetGame(draw);
+  };
+};
+
+function resetGame(result) {
+  if (typeof(result) === 'string') {
+    ticTacToe.style.pointerEvents = 'none';
+    game.resetGame();
+    setTimeout(resetBoard, 3000);
+  };
+};
+
+function resetBoard() {
+    ticTacToe.innerHTML = `
+    <tr class="top-row">
+      <td class="column-one" id="1"></td>
+      <td class="column-two" id="2"></td>
+      <td class="column-three" id="3"></td>
+    </tr>
+    <tr class="middle-row">
+      <td class="column-one" id="4"></td>
+      <td class="column-two" id="5"></td>
+      <td class="column-three" id="6"></td>
+    </tr>
+    <tr class="bottom-row">
+      <td class="column-one" id="7"></td>
+      <td class="column-two" id="8"></td>
+      <td class="column-three" id="9"></td>
+    </tr>
+    `;
+  updateScore();
+  ticTacToe.style.pointerEvents = 'auto';
+  showPlayerTurn();
 };

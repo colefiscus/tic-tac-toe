@@ -58,6 +58,7 @@ h1 {
 
 .tic-tac-toe {
   border-collapse: collapse;
+  pointer-events: auto;
   height: 70%;
   width: 70%;
 }
