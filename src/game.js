@@ -22,7 +22,7 @@ class Game {
   };
 
   updateBoard(player, choice) {
-    if (player.myTurn === true) {
+    if (player.myTurn && this.board[choice] === '') {
       this.board[choice] = player.token;
     };
   };
@@ -30,58 +30,49 @@ class Game {
   checkForWinner(player) {
     var token = player.token;
     var board = this.board;
-    debugger;
-     switch (true) {
-       case board[1] === token && board[2] === token && board[3] === token :
-         this.addWinToPlayer(player);
-         return `${player.id} wins!`;
-       break;
 
-       case board[4] === token && board[5] === token && board[6] === token :
-         this.addWinToPlayer(player);
-         return `${player.id} wins!`;
-       break;
+    switch (true) {
+     case board[1] === token && board[2] === token && board[3] === token :
+       this.addWinToPlayer(player);
+       return `${player.id} wins!`;
 
-       case board[7] === token && board[8] === token && board[9] === token :
-         this.addWinToPlayer(player);
-         return `${player.id} wins!`;
-       break;
+     case board[4] === token && board[5] === token && board[6] === token :
+       this.addWinToPlayer(player);
+       return `${player.id} wins!`;
 
-       case board[1] === token && board[4] === token && board[7] === token :
-         this.addWinToPlayer(player);
-         return `${player.id} wins!`;
-       break;
+     case board[7] === token && board[8] === token && board[9] === token :
+       this.addWinToPlayer(player);
+       return `${player.id} wins!`;
 
-       case board[2] === token && board[5] === token && board[8] === token :
-         this.addWinToPlayer(player);
-         return `${player.id} wins!`;
-       break;
+      case board[1] === token && board[4] === token && board[7] === token :
+       this.addWinToPlayer(player);
+       return `${player.id} wins!`;
 
-       case board[3] === token && board[6] === token && board[9] === token :
-         this.addWinToPlayer(player);
-         return `${player.id} wins!`;
-       break;
+      case board[2] === token && board[5] === token && board[8] === token :
+       this.addWinToPlayer(player);
+       return `${player.id} wins!`;
 
-       case board[3] === token && board[5] === token && board[7] === token :
-         this.addWinToPlayer(player);
-         return `${player.id} wins!`;
-       break;
+      case board[3] === token && board[6] === token && board[9] === token :
+       this.addWinToPlayer(player);
+       return `${player.id} wins!`;
 
-       case board[1] === token && board[5] === token && board[9] === token :
-         this.addWinToPlayer(player);
-         return `${player.id} wins!`;
-       break;
+      case board[3] === token && board[5] === token && board[7] === token :
+       this.addWinToPlayer(player);
+       return `${player.id} wins!`;
 
-       default :
-       return;
-       break;
+     case board[1] === token && board[5] === token && board[9] === token :
+       this.addWinToPlayer(player);
+       return `${player.id} wins!`;
+
+     default :
+     return;
      }
   };
 
   checkForDraw() {
-    var drawCounter
+    var drawCounter = 0;
     debugger;
-    for (var i = 0; i < 10; i++) {
+    for (var i = 1; i < 10; i++) {
       if (this.board[i] === this.player1.token || this.board[i] === this.player2.token) {
         drawCounter++
       }
