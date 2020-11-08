@@ -22,7 +22,7 @@ class Game {
   };
 
   updateBoard(player, choice) {
-    if (player.myTurn && this.board[choice] === '') {
+    if (this.board[choice] === '') {
       this.board[choice] = player.token;
     };
   };
@@ -33,36 +33,36 @@ class Game {
 
     switch (true) {
      case board[1] === token && board[2] === token && board[3] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
      case board[4] === token && board[5] === token && board[6] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
      case board[7] === token && board[8] === token && board[9] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
       case board[1] === token && board[4] === token && board[7] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
       case board[2] === token && board[5] === token && board[8] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
       case board[3] === token && board[6] === token && board[9] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
       case board[3] === token && board[5] === token && board[7] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
      case board[1] === token && board[5] === token && board[9] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
      default :
      return;
@@ -81,7 +81,7 @@ class Game {
     }
   };
 
-  addWinToPlayer(player) {
+  addPointsToPlayer(player) {
     player.points += 100;
   };
 

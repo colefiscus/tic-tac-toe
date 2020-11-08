@@ -21,7 +21,7 @@ var game = new Game()
 
 // EVENT LISTENERS //
 window.addEventListener('load', startNewGame)
-ticTacToe.addEventListener('click', addPlayerToken)
+ticTacToe.addEventListener('click', takePlayerTurn)
 
 // I dont know if I need all of these if I can just use event.target + IDs
 
@@ -55,7 +55,34 @@ function updateScore() {
   playerTwoPoints.innerText = `${game.player2.points} Points`;
 };
 
-function addPlayerToken(event) {
-  var squareID = event.target.id
-  game.updateBoard(player, squareID)
-}
+function takePlayerTurn(event) {
+  if (game.player1.myTurn) {
+    addPlayerToken(event, game.player1);
+    checkForWinner(game.player1);
+    checkForDraw()
+    game.takeTurn();
+  } else {
+    addPlayerToken(event, game.player2);
+    checkForWinner(game.player2);
+    checkForDraw();
+    game.takeTurn();
+  };
+};
+
+function addPlayerToken(event, player) {
+  var squareID = event.target.id;
+  if (player.myTurn) {
+    game.updateBoard(player, squareID);
+    event.target.innerText = player.token;
+  };
+};
+
+function checkForWinner(player) {
+  var winner = game.checkForWinner(player);
+  ticTacToeText.innerText = `${winner}`;
+};
+
+function checkForDraw() {
+  var draw = game.checkForDraw();
+  ticTacToeText.innerText = `${draw}`;
+};
