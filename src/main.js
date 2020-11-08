@@ -14,11 +14,11 @@ ticTacToe.addEventListener('click', takePlayerTurn);
 // FUNCTIONS //
 function startNewGame() {
   game.startNewGame();
-  showPlayerTurn();
+  displayPlayerTurn();
   updateScore();
 };
 
-function showPlayerTurn() {
+function displayPlayerTurn() {
   if (game.player1.myTurn) {
     ticTacToeText.innerText = `It is ${game.player1.id}'s turn.`;
   } else {
@@ -34,14 +34,12 @@ function updateScore() {
 function takePlayerTurn(event) {
   if (game.player1.myTurn) {
     addPlayerToken(game.player1);
-    game.takeTurn();
-    showPlayerTurn();
+    displayPlayerTurn();
     checkForWinner(game.player1);
     checkForDraw();
   } else {
     addPlayerToken(game.player2);
-    game.takeTurn();
-    showPlayerTurn();
+    displayPlayerTurn();
     checkForWinner(game.player2);
     checkForDraw();
   };
@@ -51,6 +49,7 @@ function addPlayerToken(player) {
   var squareID = event.target.id;
   if (player.myTurn && !event.target.innerText) {
     game.updateBoard(player, squareID);
+    game.takeTurn();
     event.target.innerText = player.token;
   };
 };
@@ -59,7 +58,7 @@ function checkForWinner(player) {
   var winner = game.checkForWinner(player);
   if (typeof(winner) === 'string') {
     ticTacToeText.innerText = `${winner}`;
-    resetGame(winner);
+    resetGame();
   };
 };
 
@@ -67,16 +66,14 @@ function checkForDraw() {
   var draw = game.checkForDraw();
   if (typeof(draw) === 'string') {
     ticTacToeText.innerText = `${draw}`;
-    resetGame(draw);
+    resetGame();
   };
 };
 
-function resetGame(result) {
-  if (typeof(result) === 'string') {
-    ticTacToe.style.pointerEvents = 'none';
-    game.resetGame();
-    setTimeout(resetBoard, 3000);
-  };
+function resetGame() {
+  ticTacToe.style.pointerEvents = 'none';
+  game.resetGame();
+  setTimeout(resetBoard, 3500);
 };
 
 function resetBoard() {
@@ -96,8 +93,8 @@ function resetBoard() {
       <td class="column-two" id="8"></td>
       <td class="column-three" id="9"></td>
     </tr>
-    `;
+    `
   updateScore();
   ticTacToe.style.pointerEvents = 'auto';
-  showPlayerTurn();
+  displayPlayerTurn();
 };
