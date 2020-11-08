@@ -5,7 +5,7 @@ class Game {
     this.board = {1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: ''};
   };
 
-  startGame() {
+  startNewGame() {
     var randomNumber = Math.ceil(Math.random() * 2);
     if (randomNumber === 1) {
       this.player1.myTurn = true;
@@ -22,7 +22,7 @@ class Game {
   };
 
   updateBoard(player, choice) {
-    if (player.myTurn && this.board[choice] === '') {
+    if (this.board[choice] === '') {
       this.board[choice] = player.token;
     };
   };
@@ -33,36 +33,36 @@ class Game {
 
     switch (true) {
      case board[1] === token && board[2] === token && board[3] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
      case board[4] === token && board[5] === token && board[6] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
      case board[7] === token && board[8] === token && board[9] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
       case board[1] === token && board[4] === token && board[7] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
       case board[2] === token && board[5] === token && board[8] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
       case board[3] === token && board[6] === token && board[9] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
       case board[3] === token && board[5] === token && board[7] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
      case board[1] === token && board[5] === token && board[9] === token :
-       this.addWinToPlayer(player);
-       return `${player.id} wins!`;
+       this.addPointsToPlayer(player);
+       return `100 points to ${player.id}!`;
 
      default :
      return;
@@ -71,7 +71,6 @@ class Game {
 
   checkForDraw() {
     var drawCounter = 0;
-    debugger;
     for (var i = 1; i < 10; i++) {
       if (this.board[i] === this.player1.token || this.board[i] === this.player2.token) {
         drawCounter++
@@ -81,14 +80,14 @@ class Game {
     }
   };
 
-  addWinToPlayer(player) {
-    player.wins++
+  addPointsToPlayer(player) {
+    player.points += 100;
   };
 
-  startNewGame() {
+  resetGame() {
     for (var i = 1; i < 10; i++) {
       this.board[i] = ''
     };
-    this.startGame();
+    this.startNewGame();
   };
 };

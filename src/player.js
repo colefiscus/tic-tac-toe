@@ -2,15 +2,15 @@ class Player {
   constructor(id, token) {
     this.id = id;
     this.token = token;
-    this.wins = 0;
+    this.points = 0;
     this.myTurn = false
   };
 
-  saveWinsToStorage() {
+  savePointsToStorage() {
 
   };
 
-  retrieveWinsFromStorage() {
+  retrievePointsFromStorage() {
 
   };
 };

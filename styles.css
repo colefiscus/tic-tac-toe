@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  font-family: fantasy;
   height: 100%;
   margin: 0%;
   display: flex;
@@ -14,7 +15,6 @@ h1 {
 }
 
 .player-section {
-  font-family: fantasy;
   text-align: center;
   width: 25%;
   padding-top: 4%;
@@ -58,6 +58,7 @@ h1 {
 
 .tic-tac-toe {
   border-collapse: collapse;
+  pointer-events: auto;
   height: 70%;
   width: 70%;
 }
