@@ -5,7 +5,7 @@ class Game {
     this.board = {1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: ''};
   };
 
-  startGame() {
+  startNewGame() {
     var randomNumber = Math.ceil(Math.random() * 2);
     if (randomNumber === 1) {
       this.player1.myTurn = true;
@@ -82,13 +82,13 @@ class Game {
   };
 
   addWinToPlayer(player) {
-    player.wins++
+    player.points += 100;
   };
 
-  startNewGame() {
+  resetGame() {
     for (var i = 1; i < 10; i++) {
       this.board[i] = ''
     };
-    this.startGame();
+    this.startNewGame();
   };
 };
