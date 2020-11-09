@@ -6,6 +6,8 @@ class Game {
   };
 
   startNewGame() {
+    this.player1.retrievePointsFromStorage(this.player1);
+    this.player2.retrievePointsFromStorage(this.player2);
     var randomNumber = Math.ceil(Math.random() * 2);
     if (randomNumber === 1) {
       this.player1.myTurn = true;
@@ -30,38 +32,45 @@ class Game {
   checkForWinner(player) {
     var token = player.token;
     var board = this.board;
-
     switch (true) {
      case board[1] === token && board[2] === token && board[3] === token :
        this.addPointsToPlayer(player);
+       player.savePointsToStorage(player);
        return `100 points to ${player.id}!`;
 
      case board[4] === token && board[5] === token && board[6] === token :
        this.addPointsToPlayer(player);
+       player.savePointsToStorage(player);
        return `100 points to ${player.id}!`;
 
      case board[7] === token && board[8] === token && board[9] === token :
        this.addPointsToPlayer(player);
+       player.savePointsToStorage(player);
        return `100 points to ${player.id}!`;
 
       case board[1] === token && board[4] === token && board[7] === token :
        this.addPointsToPlayer(player);
+       player.savePointsToStorage(player);
        return `100 points to ${player.id}!`;
 
       case board[2] === token && board[5] === token && board[8] === token :
        this.addPointsToPlayer(player);
+       player.savePointsToStorage(player);
        return `100 points to ${player.id}!`;
 
       case board[3] === token && board[6] === token && board[9] === token :
        this.addPointsToPlayer(player);
+       player.savePointsToStorage(player);
        return `100 points to ${player.id}!`;
 
       case board[3] === token && board[5] === token && board[7] === token :
        this.addPointsToPlayer(player);
+       player.savePointsToStorage(player);
        return `100 points to ${player.id}!`;
 
      case board[1] === token && board[5] === token && board[9] === token :
        this.addPointsToPlayer(player);
+       player.savePointsToStorage(player);
        return `100 points to ${player.id}!`;
 
      default :

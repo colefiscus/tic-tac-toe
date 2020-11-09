@@ -73,7 +73,7 @@ function checkForDraw() {
 function resetGame() {
   ticTacToe.style.pointerEvents = 'none';
   game.resetGame();
-  setTimeout(resetBoard, 3500);
+  setTimeout(resetBoard, 2000);
 };
 
 function resetBoard() {
