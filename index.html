@@ -3,18 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Tic-Tac-Toe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
     <section class="player-section player-1">
       <article>
-        <h1>🦁<h1>
-        <h1 class="player-1-points"></h1>
+        <h1>Gryffindor</h1>
+        <h2>🦁</h2>
+        <h3 class="js-player-1-points"></h3>
       </article>
     </section>
     <main class="gameplay">
-      <h1 class="tic-tac-toe-text"></h1>
-      <table class="tic-tac-toe">
+      <h1 class="js-tic-tac-toe-text"></h1>
+      <table class="tic-tac-toe js-tic-tac-toe">
         <tr class="top-row">
           <td class="column-one" id="1"></td>
           <td class="column-two" id="2"></td>
@@ -34,8 +36,9 @@
     </main>
     <section class="player-section player-2">
       <article>
-        <h1>🐍<h1>
-        <h1 class="player-2-points"></h1>
+        <h1>Slytherin</h1>
+        <h2>🐍</h2>
+        <h3 class="js-player-2-points"></h3>
       </article>
     </section>
     <script src="./src/player.js"></script>

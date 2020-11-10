@@ -1,9 +1,9 @@
 // QUERY SELECTORS / GLOBAL VARIABLES //
-var playerOnePoints = document.querySelector('.player-1-points');
-var playerTwoPoints = document.querySelector('.player-2-points');
-var ticTacToeText = document.querySelector('.tic-tac-toe-text');
+var playerOnePoints = document.querySelector('.js-player-1-points');
+var playerTwoPoints = document.querySelector('.js-player-2-points');
+var ticTacToeText = document.querySelector('.js-tic-tac-toe-text');
 
-var ticTacToe = document.querySelector('.tic-tac-toe');
+var ticTacToe = document.querySelector('.js-tic-tac-toe');
 
 var game = new Game();
 
@@ -16,12 +16,14 @@ function startNewGame() {
   ticTacToe.style.pointerEvents = 'auto';
   game.startNewGame();
   displayPlayerTurn();
+  addHoverStates();
   updateScore();
 };
 
 function displayPlayerTurn() {
   player = game.returnCorrectPlayerTurn();
   ticTacToeText.innerText = `It is ${player.id}'s turn.`;
+  addHoverStates();
 };
 
 function updateScore() {
@@ -29,7 +31,17 @@ function updateScore() {
   playerTwoPoints.innerText = `${game.player2.points} Points`;
 };
 
-function displayResults() {
+function addHoverStates() {
+  for (var i = 1; i < 10; i++) {
+    ticTacToeSquare = document.getElementById(`${i}`);
+    ticTacToeSquare.classList.remove('empty');
+    if (!ticTacToeSquare.innerText) {
+      ticTacToeSquare.classList.add('empty');
+    };
+  };
+};
+
+function displayResults(event) {
   if (!event.target.innerText) {
     var player = game.returnCorrectPlayerTurn();
     var results = game.returnResults(player, event.target.id);
@@ -38,6 +50,7 @@ function displayResults() {
       displayPlayerTurn();
     } else {
       ticTacToeText.innerText = `${results}`;
+      updateScore();
       resetGame();
     };
   };
@@ -45,7 +58,14 @@ function displayResults() {
 
 function resetGame() {
   ticTacToe.style.pointerEvents = 'none';
-  setTimeout(resetBoard, 2000);
+  setTimeout(showResetTimer, 1800);
+};
+
+function showResetTimer() {
+  ticTacToeText.innerText = `New game in 3 seconds...`;
+  setTimeout(function() {ticTacToeText.innerText = `New game in 2 seconds...`}, 1000);
+  setTimeout(function() {ticTacToeText.innerText = `New game in 1 second...`}, 2000);
+  setTimeout(resetBoard, 3000);
 };
 
 function resetBoard() {
