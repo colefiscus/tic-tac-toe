@@ -19,7 +19,7 @@ h3 {
 
 .player-section {
   width: 25%;
-  padding-top: 4%;
+  padding-top: 11%
 }
 
 .player-1 {
@@ -59,27 +59,22 @@ h3 {
 }
 
 .tic-tac-toe {
-  border-collapse: collapse;
   pointer-events: auto;
   height: 70%;
   width: 70%;
 }
 
-.tic-tac-toe-grid {
-  border: 2px solid #000000;
-}
-
 td {
   text-align: center;
-  z-index: 1;
   font-size: 5em;
-  border: 8px solid;
+  border: 8px inset midnightblue;
+  border-radius: 6%;
   height: 33.33%;
   width: 33.33%;
 }
 
 .empty:hover {
-  background-color: #73D3FF;
+  background-color: #41CDFF;
   opacity: 0.25;
 }
 

@@ -23,6 +23,7 @@ function startNewGame() {
 function displayPlayerTurn() {
   player = game.returnCorrectPlayerTurn();
   ticTacToeText.innerText = `It is ${player.id}'s turn.`;
+  addHoverStates();
 };
 
 function updateScore() {
@@ -40,14 +41,13 @@ function addHoverStates() {
   };
 };
 
-function displayResults() {
+function displayResults(event) {
   if (!event.target.innerText) {
     var player = game.returnCorrectPlayerTurn();
     var results = game.returnResults(player, event.target.id);
     event.target.innerText = game.board[event.target.id];
     if (results === false) {
       displayPlayerTurn();
-      addHoverStates();
     } else {
       ticTacToeText.innerText = `${results}`;
       updateScore();
@@ -58,7 +58,7 @@ function displayResults() {
 
 function resetGame() {
   ticTacToe.style.pointerEvents = 'none';
-  setTimeout(showResetTimer, 2000);
+  setTimeout(showResetTimer, 1800);
 };
 
 function showResetTimer() {
