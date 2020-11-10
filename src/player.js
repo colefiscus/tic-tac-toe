@@ -6,11 +6,13 @@ class Player {
     this.myTurn = false
   };
 
-  savePointsToStorage() {
-
+  savePointsToStorage(player) {
+    localStorage.setItem(player.id, player.points)
   };
 
-  retrievePointsFromStorage() {
-
+  retrievePointsFromStorage(player) {
+    if (localStorage.hasOwnProperty(player.id)) {
+      player.points = JSON.parse(localStorage.getItem(player.id));
+    }
   };
 };
