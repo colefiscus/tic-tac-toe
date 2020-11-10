@@ -8,22 +8,20 @@ var ticTacToe = document.querySelector('.tic-tac-toe');
 var game = new Game();
 
 // EVENT LISTENERS //
-window.addEventListener('load', startNewGame);
-ticTacToe.addEventListener('click', takePlayerTurn);
+window.onload = startNewGame;
+ticTacToe.addEventListener('click', displayResults);
 
 // FUNCTIONS //
 function startNewGame() {
+  ticTacToe.style.pointerEvents = 'auto';
   game.startNewGame();
   displayPlayerTurn();
   updateScore();
 };
 
 function displayPlayerTurn() {
-  if (game.player1.myTurn) {
-    ticTacToeText.innerText = `It is ${game.player1.id}'s turn.`;
-  } else {
-    ticTacToeText.innerText = `It is ${game.player2.id}'s turn.`;
-  };
+  player = game.returnCorrectPlayerTurn();
+  ticTacToeText.innerText = `It is ${player.id}'s turn.`;
 };
 
 function updateScore() {
@@ -31,48 +29,22 @@ function updateScore() {
   playerTwoPoints.innerText = `${game.player2.points} Points`;
 };
 
-function takePlayerTurn(event) {
-  if (game.player1.myTurn) {
-    addPlayerToken(game.player1);
-    displayPlayerTurn();
-    checkForWinner(game.player1);
-    checkForDraw();
-  } else {
-    addPlayerToken(game.player2);
-    displayPlayerTurn();
-    checkForWinner(game.player2);
-    checkForDraw();
-  };
-};
-
-function addPlayerToken(player) {
-  var squareID = event.target.id;
-  if (player.myTurn && !event.target.innerText) {
-    game.updateBoard(player, squareID);
-    game.takeTurn();
-    event.target.innerText = player.token;
-  };
-};
-
-function checkForWinner(player) {
-  var winner = game.checkForWinner(player);
-  if (typeof(winner) === 'string') {
-    ticTacToeText.innerText = `${winner}`;
-    resetGame();
-  };
-};
-
-function checkForDraw() {
-  var draw = game.checkForDraw();
-  if (typeof(draw) === 'string') {
-    ticTacToeText.innerText = `${draw}`;
-    resetGame();
+function displayResults() {
+  if (!event.target.innerText) {
+    var player = game.returnCorrectPlayerTurn();
+    var results = game.returnResults(player, event.target.id);
+    event.target.innerText = game.board[event.target.id];
+    if (results === false) {
+      displayPlayerTurn();
+    } else {
+      ticTacToeText.innerText = `${results}`;
+      resetGame();
+    };
   };
 };
 
 function resetGame() {
   ticTacToe.style.pointerEvents = 'none';
-  game.resetGame();
   setTimeout(resetBoard, 2000);
 };
 
@@ -94,7 +66,5 @@ function resetBoard() {
       <td class="column-three" id="9"></td>
     </tr>
     `
-  updateScore();
-  ticTacToe.style.pointerEvents = 'auto';
-  displayPlayerTurn();
+  startNewGame();
 };
