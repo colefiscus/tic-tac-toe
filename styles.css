@@ -4,40 +4,43 @@ html {
 
 body {
   font-family: fantasy;
+  text-align: center;
   height: 100%;
   margin: 0%;
   display: flex;
 }
 
-h1 {
+h1,
+h2,
+h3 {
     font-size: 3em;
     margin: 3%;
 }
 
 .player-section {
-  text-align: center;
+
   width: 25%;
   padding-top: 4%;
 }
 
 .player-1 {
   color: #FFCA00;
-  background-image: radial-gradient(
+  background: radial-gradient(
     circle at top left,
     #8F0006 15%,
     #D60008 50%,
     #FFCA00
-    );
+    ) #000000;
 }
 
 .player-2 {
   color: #A6A6A6;
-  background-image: radial-gradient(
+  background: radial-gradient(
     circle at top right,
     #004712 15%,
     #009425 50%,
     #A6A6A6
-    )
+    ) #000000;
 }
 
 .gameplay {
@@ -71,14 +74,14 @@ td {
   width: 33.33%;
 }
 .top-row td {
-  border-top: none;
+  border-top: 0;
 }
 .bottom-row td {
-  border-bottom: none;
+  border-bottom: 0;
 }
 .column-one {
-  border-left: none;
+  border-left: 0;
 }
 .column-three {
-  border-right: none;
+  border-right: 0;
 }

@@ -1,9 +1,9 @@
 // QUERY SELECTORS / GLOBAL VARIABLES //
-var playerOnePoints = document.querySelector('.player-1-points');
-var playerTwoPoints = document.querySelector('.player-2-points');
-var ticTacToeText = document.querySelector('.tic-tac-toe-text');
+var playerOnePoints = document.querySelector('.js-player-1-points');
+var playerTwoPoints = document.querySelector('.js-player-2-points');
+var ticTacToeText = document.querySelector('.js-tic-tac-toe-text');
 
-var ticTacToe = document.querySelector('.tic-tac-toe');
+var ticTacToe = document.querySelector('.js-tic-tac-toe');
 
 var game = new Game();
 
@@ -39,13 +39,21 @@ function displayResults() {
     } else {
       ticTacToeText.innerText = `${results}`;
       resetGame();
+      updateScore();
     };
   };
 };
 
 function resetGame() {
   ticTacToe.style.pointerEvents = 'none';
-  setTimeout(resetBoard, 2000);
+  setTimeout(showResetTimer, 2000);
+};
+
+function showResetTimer() {
+  ticTacToeText.innerText = `New game in 3 seconds...`;
+  setTimeout(function() {ticTacToeText.innerText = `New game in 2 seconds...`}, 1000);
+  setTimeout(function() {ticTacToeText.innerText = `New game in 1 second...`}, 2000);
+  setTimeout(resetBoard, 3000);
 };
 
 function resetBoard() {

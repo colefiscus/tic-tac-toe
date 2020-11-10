@@ -104,26 +104,26 @@ class Game {
       default :
         output = false;
         break;
-     }
-     if (output !== false) {
+     };
+     if (output) {
        player.points += 100;
        player.savePointsToStorage(player);
        return output;
      } else {
        return output;
-     }
+     };
   };
 
   checkForDraw() {
     var drawCounter = 0;
     for (var i = 1; i < 10; i++) {
       if (this.board[i] !== '') {
-        drawCounter++
+        drawCounter++;
       }
     } if (drawCounter === 9) {
-      return `It is a draw, play again...`
+      return `It is a draw, play again...`;
     } else {
       return false;
-    }
+    };
   };
 };
