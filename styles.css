@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: fantasy;
+  font-family: 'Satisfy', fantasy;
   text-align: center;
   height: 100%;
   margin: 0%;
@@ -13,12 +13,11 @@ body {
 h1,
 h2,
 h3 {
-    font-size: 3em;
-    margin: 3%;
+  font-size: 3.5em;
+  margin: 3%;
 }
 
 .player-section {
-
   width: 25%;
   padding-top: 4%;
 }
@@ -34,12 +33,12 @@ h3 {
 }
 
 .player-2 {
-  color: #A6A6A6;
+  color: #ACAEAE;
   background: radial-gradient(
     circle at top right,
     #004712 15%,
     #009425 50%,
-    #A6A6A6
+    #ACAEAE
     ) #000000;
 }
 
@@ -66,22 +65,36 @@ h3 {
   width: 70%;
 }
 
+.tic-tac-toe-grid {
+  border: 2px solid #000000;
+}
+
 td {
   text-align: center;
+  z-index: 1;
   font-size: 5em;
   border: 8px solid;
   height: 33.33%;
   width: 33.33%;
 }
+
+.empty:hover {
+  background-color: #73D3FF;
+  opacity: 0.25;
+}
+
 .top-row td {
   border-top: 0;
 }
+
 .bottom-row td {
   border-bottom: 0;
 }
+
 .column-one {
   border-left: 0;
 }
+
 .column-three {
   border-right: 0;
 }

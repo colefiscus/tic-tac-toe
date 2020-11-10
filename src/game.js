@@ -59,9 +59,7 @@ class Game {
   };
 
   updateBoard(player, choice) {
-    if (this.board[choice] === '') {
       this.board[choice] = player.token;
-    };
   };
 
   checkForWinner(player) {

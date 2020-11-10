@@ -16,6 +16,7 @@ function startNewGame() {
   ticTacToe.style.pointerEvents = 'auto';
   game.startNewGame();
   displayPlayerTurn();
+  addHoverStates();
   updateScore();
 };
 
@@ -29,6 +30,16 @@ function updateScore() {
   playerTwoPoints.innerText = `${game.player2.points} Points`;
 };
 
+function addHoverStates() {
+  for (var i = 1; i < 10; i++) {
+    ticTacToeSquare = document.getElementById(`${i}`);
+    ticTacToeSquare.classList.remove('empty');
+    if (!ticTacToeSquare.innerText) {
+      ticTacToeSquare.classList.add('empty');
+    };
+  };
+};
+
 function displayResults() {
   if (!event.target.innerText) {
     var player = game.returnCorrectPlayerTurn();
@@ -36,10 +47,11 @@ function displayResults() {
     event.target.innerText = game.board[event.target.id];
     if (results === false) {
       displayPlayerTurn();
+      addHoverStates();
     } else {
       ticTacToeText.innerText = `${results}`;
-      resetGame();
       updateScore();
+      resetGame();
     };
   };
 };
