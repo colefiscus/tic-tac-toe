@@ -18,7 +18,7 @@ Technologies used for this project include vanilla JavaScript, HTML, and CSS. Pl
   - `cd` into that local repo
   - enter `open index.html`; you should now be able to play your first game.
   
-Although not available to view now, future access to the webpage will be available --> HERE <--.
+You can also directly access the app's webpage [here](https://colefiscus.github.io/tic-tac-toe/).
 
 ## What
 As mentioned previously, the files included will allow you, or a user, to play Tic-Tac-Toe. The files included are as follows:
