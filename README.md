@@ -34,7 +34,12 @@ As mentioned previously, the files included will allow you, or a user, to play T
   - When a user is deciding where to place their token, all *available* spots will have a light blue overlay displayed over the grid space when the user hovers their cursor on it.
   
 ## HOW (to play)
+The gif below shows examples of the following:
+  - What happens when a game is won; prompt is displayed, score is updated, countdown begins.
+  - What happens when a game results in a draw; prompt is displayed, countdown begins.
+  - What happens when the page is refreshed; the player's points remain.
 
+![How to Play](https://github.com/colefiscus/tic-tac-toe/blob/update-README/tic-tac-toe-gif.gif)
 
 ## Wins/Challenges
 #### Wins
