@@ -3,23 +3,23 @@ html {
 }
 
 body {
-  font-family: 'Satisfy', fantasy;
-  text-align: center;
   height: 100%;
   margin: 0%;
   display: flex;
+  font-family: 'Satisfy', fantasy;
+  text-align: center;
 }
 
 h1,
 h2,
 h3 {
-  font-size: 3.5em;
   margin: 3%;
+  font-size: 3.5em;
 }
 
 .player-section {
   width: 25%;
-  padding-top: 11%
+  padding-top: 11%;
 }
 
 .player-1 {
@@ -43,6 +43,11 @@ h3 {
 }
 
 .gameplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
   background-image: radial-gradient(
     circle at center,
     #FFFFFF,
@@ -51,26 +56,24 @@ h3 {
     );
   border-left: 6px solid #8F0006;
   border-right: 6px solid #004712;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 50%;
 }
 
 .tic-tac-toe {
-  pointer-events: auto;
   height: 70%;
   width: 70%;
 }
 
+.tic-tac-toe-timeout {
+  pointer-events: none;
+}
+
 td {
+  height: 33.33%;
+  width: 33.33%;
   text-align: center;
   font-size: 5em;
   border: 8px inset midnightblue;
   border-radius: 6%;
-  height: 33.33%;
-  width: 33.33%;
 }
 
 .empty:hover {

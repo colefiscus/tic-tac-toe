@@ -13,7 +13,7 @@ ticTacToe.addEventListener('click', displayResults);
 
 // FUNCTIONS //
 function startNewGame() {
-  ticTacToe.style.pointerEvents = 'auto';
+  ticTacToe.classList.remove('tic-tac-toe-timeout');
   game.startNewGame();
   displayPlayerTurn();
   addHoverStates();
@@ -57,7 +57,7 @@ function displayResults(event) {
 };
 
 function resetGame() {
-  ticTacToe.style.pointerEvents = 'none';
+  ticTacToe.classList.add('tic-tac-toe-timeout');
   setTimeout(showResetTimer, 1800);
 };
 
